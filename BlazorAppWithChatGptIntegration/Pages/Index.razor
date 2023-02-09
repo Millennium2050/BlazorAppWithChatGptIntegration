@@ -1,4 +1,7 @@
 ﻿@page "/"
+@inject ReadChatGptApi service
+
+
 
 <PageTitle>Index</PageTitle>
 
@@ -6,9 +9,8 @@
 
 
 <div class="form-control">
-
-    <input class="form-control w-100">
-    <button class="btn btn-primary mt-1">i'm feeling lucky!</button>
+    <input class="form-control w-100" @bind="prompt">
+    <button class="btn btn-primary mt-1" @onclick="@(()=>{ GetText(prompt);})">i'm feeling lucky!</button>
 </div>
 
 
@@ -17,3 +19,10 @@
     min-height: 1000px;
 "></textarea>
 </div>
+
+
+@code {
+    private string prompt { set; get; }
+    private string response { set; get; }
+    private void GetText(string prompt) => service.GetResult(prompt);
+}
