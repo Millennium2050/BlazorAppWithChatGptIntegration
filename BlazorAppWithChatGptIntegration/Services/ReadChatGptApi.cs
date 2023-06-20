@@ -33,9 +33,8 @@ namespace BlazorAppWithChatGptIntegration.Services
                     return "sorry, try with more info";
                 }
             }
-            catch (Exception xe)
+            catch (Exception)
             {
-
                 throw;
             }
            
